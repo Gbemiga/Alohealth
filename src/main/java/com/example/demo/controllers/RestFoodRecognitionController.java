@@ -31,8 +31,12 @@ public class RestFoodRecognitionController {
 
         HttpHeaders h = new HttpHeaders();
         h.setContentType(MediaType.IMAGE_JPEG);
+        try {
         return restTemplate.exchange(urlTo, HttpMethod.POST, new HttpEntity<>(pRequest, h), Map.class);
-        //setup params
+        } catch(HttpStatusCodeException e) {
+            return ResponseEntity.ok(Collections.singletonMap("error", e.getResponseBodyAsString()));
+        }
+            //setup params
 //        Map<String, String> params = new HashMap<String, String>(2);
 //        params.put("foo", "");
 //        params.put("bar", "");
