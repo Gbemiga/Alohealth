@@ -31,6 +31,7 @@ public class RestFoodRecognitionController {
         try {
             result = multipartRequest(urlTo, params, "/Users/gbemigaadeosun/Documents/Alohealth/src/main/resources/test1.jpg", "picture", "picture/jpg");
             System.out.print(result + " Final");
+            return result;
         } catch (Exception e) {
             e.printStackTrace();
         }
